@@ -27,9 +27,10 @@
  </form>
  <?php
     try {
-        $conn = new PDO("sqlsrv:server = poiappserver.database.windows.net; Database = sfs-kuis1", "poi", "ukm12345*");
-        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+        $conn = new PDO("sqlsrv:server = tcp:poiappserver.database.windows.net,1433; Database = sfs-kuis1", "poi", "ukm12345*");
+        $conn->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch(Exception $e) {
+        print("Error connecting to SQL Server.");
         echo "Failed: " . $e;
     }
 
